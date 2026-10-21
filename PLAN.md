@@ -32,7 +32,7 @@ Each event has a **code** (set in `src/config.js`): **Mehndi = `0301`**, **Barat
 ## Page flow
 
 1. **Gift box**: ivory box with a sage ribbon and a seal. Tap to open: the ribbon slides off, the lid flies open, light rays and gold confetti burst out, and the invitation card rises out and zooms into the page. Music starts on that tap.
-2. **Hero**: Bismillah, hosts line, couple's names, and the list of events.
+2. **Hero (first view)**: a framed scene drawn in code: cloudy sky, white-flower arch with draped curtains, columns with flower bunches, urns, and calm water with a small yacht. In the centre: monogram, hosts line, couple's names and a date block. A guest with one event sees the full date, venue and time; a guest with several sees the date span and the event names. It scales for phone, tablet and desktop.
 3. **Verse and families**: Surah Ar-Rum 30:21, plus the Rashid and Ashraf families.
 4. **The Celebrations**: one card per invited event with its own illustration, date, programme times, venue, a map link and an add-to-calendar button.
 5. **Countdown** to the first upcoming invited event.
