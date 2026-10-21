@@ -1,60 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
-import WEDDING from "../config";
-import { gsap } from "../lib/gsap";
-import { createAmbient } from "../lib/ambient";
+import React, { useState } from "react";
+import { setMusicMuted } from "../lib/music";
 import { useLang } from "../lib/i18n";
 
-const FILE_LEVEL = 0.45;
-
-/**
- * Starts when the gift is opened (that tap is the user gesture browsers require).
- * Plays public/assets/music.mp3 if it exists, otherwise a soft generated piece.
- */
+/** Mute / unmute control. The music itself is started by the gift-box tap (see lib/music.js). */
 export default function MusicButton({ start }) {
   const { t } = useLang();
-  const engine = useRef(null);
   const [muted, setMuted] = useState(false);
-
-  useEffect(() => {
-    if (!start) return undefined;
-    let cancelled = false;
-    (async () => {
-      let hasFile = false;
-      if (WEDDING.music) {
-        try {
-          const r = await fetch(WEDDING.music, { method: "HEAD" });
-          hasFile = r.ok && /audio|mpeg|ogg/.test(r.headers.get("content-type") || "");
-        } catch { /* fall back to generated music */ }
-      }
-      if (cancelled) return;
-      if (hasFile) {
-        const a = new Audio(WEDDING.music);
-        a.loop = true;
-        a.volume = 0;
-        await a.play().catch(() => {});
-        gsap.to(a, { volume: FILE_LEVEL, duration: 3 });
-        engine.current = {
-          setMuted: (m) => {
-            if (!m) a.play().catch(() => {});
-            gsap.to(a, { volume: m ? 0 : FILE_LEVEL, duration: 0.5, onComplete: () => { if (m) a.pause(); } });
-          },
-          stop: () => a.pause(),
-        };
-      } else {
-        const amb = createAmbient();
-        await amb.start().catch(() => {});
-        engine.current = { setMuted: (m) => amb.setMuted(m), stop: () => amb.stop() };
-      }
-    })();
-    return () => { cancelled = true; engine.current?.stop(); engine.current = null; };
-  }, [start]);
 
   if (!start) return null;
 
   const toggle = () => {
     const next = !muted;
     setMuted(next);
-    engine.current?.setMuted(next);
+    setMusicMuted(next);
   };
 
   return (

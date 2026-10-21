@@ -34,8 +34,9 @@ const WEDDING = {
 
   lookingForward: "All family members, relatives & friends",
 
-  // Background music (played after the box is opened). Button hides if the file is missing.
-  music: "assets/music.mp3", // put the file in public/assets/
+  // Background music. Leave "" to use the built-in soft generated music (no file needed).
+  // To use your own track: put it in public/assets/ and set e.g. "assets/music.mp3".
+  music: "",
 
   signOff: "With love & duas — the families",
 

@@ -11,6 +11,7 @@ import Countdown from "./components/Countdown";
 import Closing from "./components/Closing";
 import Finale from "./components/Finale";
 import TopBar from "./components/TopBar";
+import { startMusic } from "./lib/music";
 import LinkMaker from "./components/LinkMaker";
 
 function Invitation() {
@@ -57,7 +58,7 @@ function Invitation() {
         guest={guest}
         initials={W.initials}
         title={announce ? t("bigNews") : t("youreInvited")}
-        onOpen={() => setOpened(true)}
+        onOpen={() => { startMusic(); setOpened(true); }}
         onDone={onDone}
       />
 

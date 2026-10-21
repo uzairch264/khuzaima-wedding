@@ -39,7 +39,7 @@ Each event has a **code** (set in `src/config.js`): **Mehndi = `0301`**, **Barat
 6. **Closing**: dua, "Looking forward", and the R.S.V.P list (tap-to-call numbers for Ch. Rashid Ali and Ch. Sadaqat Ali; Rabi Rashid, Tanzeel Waheed and Abdul Moiz listed without numbers).
 7. **Finale**: monogram, names, date range · city, and the stone urns of white roses.
 
-Top-right on every screen: **English / اردو** switch (also `?lang=ur` in the link) and a **music mute/unmute** button. Music is a soft generated piece; if you add `public/assets/music.mp3` it plays that instead.
+Top-right on every screen: **English / اردو** switch (also `?lang=ur` in the link) and a **music mute/unmute** button. Music is a soft generated piece started by the gift-box tap; to use your own track, set `music` in `src/config.js`.
 
 Layout adapts to phone, tablet and desktop (events sit side by side on wide screens).
 
@@ -62,6 +62,6 @@ React 18, Vite 6, GSAP 3.13 + ScrollTrigger + @gsap/react (animation), Lenis (sm
 - **Bride's name.** The cards only say "D/o Ch. M. Ashraf", so that is what shows. Change `couple[1]` in `config.js` when you have it.
 - **Home address or map link** for the Mehndi and Barat ("Home Sweet Home"). Until you add `address` or `map`, the "View on map" link is hidden for those two.
 - **Qasr-e-Mussarat map link** (optional). It currently searches by name and address.
-- **Music file** (optional) at `public/assets/music.mp3`. Without it the generated soft music plays.
+- **Music file** (optional): put it in `public/assets/` and set `music` in `src/config.js`. By default (`music: ""`) the built-in soft generated music plays, with no file or 404.
 - **Urdu text.** Translations are in the `ur` block of `config.js` and `src/lib/i18n.jsx`; worth a read-through by a native speaker.
 - **Event end times** are estimates (used only for the add-to-calendar button).
