@@ -8,7 +8,9 @@ const OFF = new Set(["0", "false", "no", "off"]);
 const tokens = (s) => s.toLowerCase().split(/[\s,\-_|+]+/).filter(Boolean);
 
 /** code -> event id, from config (e.g. "0301" -> "mehndi"). Event names in the URL are NOT accepted. */
-const byCode = () => Object.fromEntries(ORDER.filter((k) => WEDDING.events[k]).map((k) => [String(WEDDING.events[k].code), k]));
+const byCode = () => Object.fromEntries(
+  ORDER.filter((k) => WEDDING.events[k]).flatMap((k) => [].concat(WEDDING.events[k].code).map((c) => [String(c), k])),
+);
 
 /**
  * ?0301 | ?0301&0707 | ?0301&973 | ?events=0301,0707 | ?e=0301-0707   (+ optional &to=Guest%20Name)

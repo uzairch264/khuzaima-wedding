@@ -10,7 +10,7 @@ export default function LinkMaker() {
   const [lang, setLang] = useState("en");
 
   const toggle = (k) => setPicked((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k]));
-  const params = [...ORDER.filter((k) => picked.includes(k)).map((k) => WEDDING.events[k].code), ...(guest.trim() ? [`to=${encodeURIComponent(guest.trim())}`] : []), ...(lang === "ur" ? ["lang=ur"] : [])].join("&");
+  const params = [...ORDER.filter((k) => picked.includes(k)).map((k) => [].concat(WEDDING.events[k].code)[0]), ...(guest.trim() ? [`to=${encodeURIComponent(guest.trim())}`] : []), ...(lang === "ur" ? ["lang=ur"] : [])].join("&");
   const base = window.location.href.split("#")[0].split("?")[0];
   const url = params ? `${base}?${params}` : base;
 

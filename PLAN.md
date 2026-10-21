@@ -12,12 +12,12 @@ npm run build    # outputs dist/ — upload to Netlify / Vercel / Cloudflare Pag
 
 ## URL rules
 
-Each event has a **code** (set in `src/config.js`): **Mehndi = `0301`**, **Barat = `0707`**, **Walima = `973`**. Event names in the URL do not work, only codes.
+Each event has a **code** (set in `src/config.js`): **Mehndi = `0301` or `0311`** (both work), **Barat = `0707`**, **Walima = `973`**. An event can have several codes; the link maker uses the first. Event names in the URL do not work, only codes.
 
 | URL | Guest sees |
 |---|---|
 | `/` | Announcement only: *Khuzaima Rashid weds Daughter of Ch. M. Ashraf* |
-| `/?0301` | Mehndi only |
+| `/?0301` or `/?0311` | Mehndi only |
 | `/?0707` | Barat only |
 | `/?973` | Walima only |
 | `/?0301&0707` | Mehndi + Barat |

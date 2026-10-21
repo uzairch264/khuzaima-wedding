@@ -40,7 +40,8 @@ const WEDDING = {
 
   signOff: "With love & duas — the families",
 
-  // Events. `code` is what goes in the guest's link: ?0301 = Mehndi, ?0707 = Barat, ?973 = Walima
+  // Events. `code` is what goes in the guest's link: ?0301 (or ?0311) = Mehndi, ?0707 = Barat, ?973 = Walima.
+  // A code can be one string or a list of strings.
   // (combine them: ?0301&0707, ?0301&973, ?0301&0707&973). Names in the URL do not work.
   // Times are Pakistan Standard Time (+05:00). `start`/`end` drive the countdown and
   // calendar button (`end` is an estimate); `program` is what guests see.
@@ -48,7 +49,7 @@ const WEDDING = {
   events: {
     mehndi: {
       title: "Mehndi",
-      code: "0301",
+      code: ["0301", "0311"], // any of these works in a link; the first is used by the link maker
       tagline: "An evening of dinner, colour & henna",
       blurb: "Dinner first, then the mehndi — come hungry, leave painted.",
       start: "2026-11-07T18:00:00+05:00",
